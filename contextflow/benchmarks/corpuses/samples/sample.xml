@@ -1,0 +1,803 @@
+<?xml version="1.0"?>
+<catalog>
+  <book id="0">
+    <author>Author 0</author>
+    <title>Title 0</title>
+    <genre>Computer</genre>
+    <price>0.0</price>
+    <publish_date>2024-01-01</publish_date>
+    <description>Description for book 0.</description>
+  </book>
+  <book id="1">
+    <author>Author 1</author>
+    <title>Title 1</title>
+    <genre>Computer</genre>
+    <price>10.99</price>
+    <publish_date>2024-01-02</publish_date>
+    <description>Description for book 1.</description>
+  </book>
+  <book id="2">
+    <author>Author 2</author>
+    <title>Title 2</title>
+    <genre>Computer</genre>
+    <price>21.98</price>
+    <publish_date>2024-01-03</publish_date>
+    <description>Description for book 2.</description>
+  </book>
+  <book id="3">
+    <author>Author 3</author>
+    <title>Title 3</title>
+    <genre>Computer</genre>
+    <price>32.97</price>
+    <publish_date>2024-01-04</publish_date>
+    <description>Description for book 3.</description>
+  </book>
+  <book id="4">
+    <author>Author 4</author>
+    <title>Title 4</title>
+    <genre>Computer</genre>
+    <price>43.96</price>
+    <publish_date>2024-01-05</publish_date>
+    <description>Description for book 4.</description>
+  </book>
+  <book id="5">
+    <author>Author 5</author>
+    <title>Title 5</title>
+    <genre>Computer</genre>
+    <price>54.95</price>
+    <publish_date>2024-01-06</publish_date>
+    <description>Description for book 5.</description>
+  </book>
+  <book id="6">
+    <author>Author 6</author>
+    <title>Title 6</title>
+    <genre>Computer</genre>
+    <price>65.94</price>
+    <publish_date>2024-01-07</publish_date>
+    <description>Description for book 6.</description>
+  </book>
+  <book id="7">
+    <author>Author 7</author>
+    <title>Title 7</title>
+    <genre>Computer</genre>
+    <price>76.93</price>
+    <publish_date>2024-01-08</publish_date>
+    <description>Description for book 7.</description>
+  </book>
+  <book id="8">
+    <author>Author 8</author>
+    <title>Title 8</title>
+    <genre>Computer</genre>
+    <price>87.92</price>
+    <publish_date>2024-01-09</publish_date>
+    <description>Description for book 8.</description>
+  </book>
+  <book id="9">
+    <author>Author 9</author>
+    <title>Title 9</title>
+    <genre>Computer</genre>
+    <price>98.91</price>
+    <publish_date>2024-01-10</publish_date>
+    <description>Description for book 9.</description>
+  </book>
+  <book id="10">
+    <author>Author 10</author>
+    <title>Title 10</title>
+    <genre>Computer</genre>
+    <price>109.9</price>
+    <publish_date>2024-01-11</publish_date>
+    <description>Description for book 10.</description>
+  </book>
+  <book id="11">
+    <author>Author 11</author>
+    <title>Title 11</title>
+    <genre>Computer</genre>
+    <price>120.89</price>
+    <publish_date>2024-01-12</publish_date>
+    <description>Description for book 11.</description>
+  </book>
+  <book id="12">
+    <author>Author 12</author>
+    <title>Title 12</title>
+    <genre>Computer</genre>
+    <price>131.88</price>
+    <publish_date>2024-01-13</publish_date>
+    <description>Description for book 12.</description>
+  </book>
+  <book id="13">
+    <author>Author 13</author>
+    <title>Title 13</title>
+    <genre>Computer</genre>
+    <price>142.87</price>
+    <publish_date>2024-01-14</publish_date>
+    <description>Description for book 13.</description>
+  </book>
+  <book id="14">
+    <author>Author 14</author>
+    <title>Title 14</title>
+    <genre>Computer</genre>
+    <price>153.86</price>
+    <publish_date>2024-01-15</publish_date>
+    <description>Description for book 14.</description>
+  </book>
+  <book id="15">
+    <author>Author 15</author>
+    <title>Title 15</title>
+    <genre>Computer</genre>
+    <price>164.85</price>
+    <publish_date>2024-01-16</publish_date>
+    <description>Description for book 15.</description>
+  </book>
+  <book id="16">
+    <author>Author 16</author>
+    <title>Title 16</title>
+    <genre>Computer</genre>
+    <price>175.84</price>
+    <publish_date>2024-01-17</publish_date>
+    <description>Description for book 16.</description>
+  </book>
+  <book id="17">
+    <author>Author 17</author>
+    <title>Title 17</title>
+    <genre>Computer</genre>
+    <price>186.83</price>
+    <publish_date>2024-01-18</publish_date>
+    <description>Description for book 17.</description>
+  </book>
+  <book id="18">
+    <author>Author 18</author>
+    <title>Title 18</title>
+    <genre>Computer</genre>
+    <price>197.82</price>
+    <publish_date>2024-01-19</publish_date>
+    <description>Description for book 18.</description>
+  </book>
+  <book id="19">
+    <author>Author 19</author>
+    <title>Title 19</title>
+    <genre>Computer</genre>
+    <price>208.81</price>
+    <publish_date>2024-01-20</publish_date>
+    <description>Description for book 19.</description>
+  </book>
+  <book id="20">
+    <author>Author 20</author>
+    <title>Title 20</title>
+    <genre>Computer</genre>
+    <price>219.8</price>
+    <publish_date>2024-01-21</publish_date>
+    <description>Description for book 20.</description>
+  </book>
+  <book id="21">
+    <author>Author 21</author>
+    <title>Title 21</title>
+    <genre>Computer</genre>
+    <price>230.79</price>
+    <publish_date>2024-01-22</publish_date>
+    <description>Description for book 21.</description>
+  </book>
+  <book id="22">
+    <author>Author 22</author>
+    <title>Title 22</title>
+    <genre>Computer</genre>
+    <price>241.78</price>
+    <publish_date>2024-01-23</publish_date>
+    <description>Description for book 22.</description>
+  </book>
+  <book id="23">
+    <author>Author 23</author>
+    <title>Title 23</title>
+    <genre>Computer</genre>
+    <price>252.77</price>
+    <publish_date>2024-01-24</publish_date>
+    <description>Description for book 23.</description>
+  </book>
+  <book id="24">
+    <author>Author 24</author>
+    <title>Title 24</title>
+    <genre>Computer</genre>
+    <price>263.76</price>
+    <publish_date>2024-01-25</publish_date>
+    <description>Description for book 24.</description>
+  </book>
+  <book id="25">
+    <author>Author 25</author>
+    <title>Title 25</title>
+    <genre>Computer</genre>
+    <price>274.75</price>
+    <publish_date>2024-01-26</publish_date>
+    <description>Description for book 25.</description>
+  </book>
+  <book id="26">
+    <author>Author 26</author>
+    <title>Title 26</title>
+    <genre>Computer</genre>
+    <price>285.74</price>
+    <publish_date>2024-01-27</publish_date>
+    <description>Description for book 26.</description>
+  </book>
+  <book id="27">
+    <author>Author 27</author>
+    <title>Title 27</title>
+    <genre>Computer</genre>
+    <price>296.73</price>
+    <publish_date>2024-01-28</publish_date>
+    <description>Description for book 27.</description>
+  </book>
+  <book id="28">
+    <author>Author 28</author>
+    <title>Title 28</title>
+    <genre>Computer</genre>
+    <price>307.72</price>
+    <publish_date>2024-01-29</publish_date>
+    <description>Description for book 28.</description>
+  </book>
+  <book id="29">
+    <author>Author 29</author>
+    <title>Title 29</title>
+    <genre>Computer</genre>
+    <price>318.71</price>
+    <publish_date>2024-01-30</publish_date>
+    <description>Description for book 29.</description>
+  </book>
+  <book id="30">
+    <author>Author 30</author>
+    <title>Title 30</title>
+    <genre>Computer</genre>
+    <price>329.7</price>
+    <publish_date>2024-01-01</publish_date>
+    <description>Description for book 30.</description>
+  </book>
+  <book id="31">
+    <author>Author 31</author>
+    <title>Title 31</title>
+    <genre>Computer</genre>
+    <price>340.69</price>
+    <publish_date>2024-01-02</publish_date>
+    <description>Description for book 31.</description>
+  </book>
+  <book id="32">
+    <author>Author 32</author>
+    <title>Title 32</title>
+    <genre>Computer</genre>
+    <price>351.68</price>
+    <publish_date>2024-01-03</publish_date>
+    <description>Description for book 32.</description>
+  </book>
+  <book id="33">
+    <author>Author 33</author>
+    <title>Title 33</title>
+    <genre>Computer</genre>
+    <price>362.67</price>
+    <publish_date>2024-01-04</publish_date>
+    <description>Description for book 33.</description>
+  </book>
+  <book id="34">
+    <author>Author 34</author>
+    <title>Title 34</title>
+    <genre>Computer</genre>
+    <price>373.66</price>
+    <publish_date>2024-01-05</publish_date>
+    <description>Description for book 34.</description>
+  </book>
+  <book id="35">
+    <author>Author 35</author>
+    <title>Title 35</title>
+    <genre>Computer</genre>
+    <price>384.65000000000003</price>
+    <publish_date>2024-01-06</publish_date>
+    <description>Description for book 35.</description>
+  </book>
+  <book id="36">
+    <author>Author 36</author>
+    <title>Title 36</title>
+    <genre>Computer</genre>
+    <price>395.64</price>
+    <publish_date>2024-01-07</publish_date>
+    <description>Description for book 36.</description>
+  </book>
+  <book id="37">
+    <author>Author 37</author>
+    <title>Title 37</title>
+    <genre>Computer</genre>
+    <price>406.63</price>
+    <publish_date>2024-01-08</publish_date>
+    <description>Description for book 37.</description>
+  </book>
+  <book id="38">
+    <author>Author 38</author>
+    <title>Title 38</title>
+    <genre>Computer</genre>
+    <price>417.62</price>
+    <publish_date>2024-01-09</publish_date>
+    <description>Description for book 38.</description>
+  </book>
+  <book id="39">
+    <author>Author 39</author>
+    <title>Title 39</title>
+    <genre>Computer</genre>
+    <price>428.61</price>
+    <publish_date>2024-01-10</publish_date>
+    <description>Description for book 39.</description>
+  </book>
+  <book id="40">
+    <author>Author 40</author>
+    <title>Title 40</title>
+    <genre>Computer</genre>
+    <price>439.6</price>
+    <publish_date>2024-01-11</publish_date>
+    <description>Description for book 40.</description>
+  </book>
+  <book id="41">
+    <author>Author 41</author>
+    <title>Title 41</title>
+    <genre>Computer</genre>
+    <price>450.59000000000003</price>
+    <publish_date>2024-01-12</publish_date>
+    <description>Description for book 41.</description>
+  </book>
+  <book id="42">
+    <author>Author 42</author>
+    <title>Title 42</title>
+    <genre>Computer</genre>
+    <price>461.58</price>
+    <publish_date>2024-01-13</publish_date>
+    <description>Description for book 42.</description>
+  </book>
+  <book id="43">
+    <author>Author 43</author>
+    <title>Title 43</title>
+    <genre>Computer</genre>
+    <price>472.57</price>
+    <publish_date>2024-01-14</publish_date>
+    <description>Description for book 43.</description>
+  </book>
+  <book id="44">
+    <author>Author 44</author>
+    <title>Title 44</title>
+    <genre>Computer</genre>
+    <price>483.56</price>
+    <publish_date>2024-01-15</publish_date>
+    <description>Description for book 44.</description>
+  </book>
+  <book id="45">
+    <author>Author 45</author>
+    <title>Title 45</title>
+    <genre>Computer</genre>
+    <price>494.55</price>
+    <publish_date>2024-01-16</publish_date>
+    <description>Description for book 45.</description>
+  </book>
+  <book id="46">
+    <author>Author 46</author>
+    <title>Title 46</title>
+    <genre>Computer</genre>
+    <price>505.54</price>
+    <publish_date>2024-01-17</publish_date>
+    <description>Description for book 46.</description>
+  </book>
+  <book id="47">
+    <author>Author 47</author>
+    <title>Title 47</title>
+    <genre>Computer</genre>
+    <price>516.53</price>
+    <publish_date>2024-01-18</publish_date>
+    <description>Description for book 47.</description>
+  </book>
+  <book id="48">
+    <author>Author 48</author>
+    <title>Title 48</title>
+    <genre>Computer</genre>
+    <price>527.52</price>
+    <publish_date>2024-01-19</publish_date>
+    <description>Description for book 48.</description>
+  </book>
+  <book id="49">
+    <author>Author 49</author>
+    <title>Title 49</title>
+    <genre>Computer</genre>
+    <price>538.51</price>
+    <publish_date>2024-01-20</publish_date>
+    <description>Description for book 49.</description>
+  </book>
+  <book id="50">
+    <author>Author 50</author>
+    <title>Title 50</title>
+    <genre>Computer</genre>
+    <price>549.5</price>
+    <publish_date>2024-01-21</publish_date>
+    <description>Description for book 50.</description>
+  </book>
+  <book id="51">
+    <author>Author 51</author>
+    <title>Title 51</title>
+    <genre>Computer</genre>
+    <price>560.49</price>
+    <publish_date>2024-01-22</publish_date>
+    <description>Description for book 51.</description>
+  </book>
+  <book id="52">
+    <author>Author 52</author>
+    <title>Title 52</title>
+    <genre>Computer</genre>
+    <price>571.48</price>
+    <publish_date>2024-01-23</publish_date>
+    <description>Description for book 52.</description>
+  </book>
+  <book id="53">
+    <author>Author 53</author>
+    <title>Title 53</title>
+    <genre>Computer</genre>
+    <price>582.47</price>
+    <publish_date>2024-01-24</publish_date>
+    <description>Description for book 53.</description>
+  </book>
+  <book id="54">
+    <author>Author 54</author>
+    <title>Title 54</title>
+    <genre>Computer</genre>
+    <price>593.46</price>
+    <publish_date>2024-01-25</publish_date>
+    <description>Description for book 54.</description>
+  </book>
+  <book id="55">
+    <author>Author 55</author>
+    <title>Title 55</title>
+    <genre>Computer</genre>
+    <price>604.45</price>
+    <publish_date>2024-01-26</publish_date>
+    <description>Description for book 55.</description>
+  </book>
+  <book id="56">
+    <author>Author 56</author>
+    <title>Title 56</title>
+    <genre>Computer</genre>
+    <price>615.44</price>
+    <publish_date>2024-01-27</publish_date>
+    <description>Description for book 56.</description>
+  </book>
+  <book id="57">
+    <author>Author 57</author>
+    <title>Title 57</title>
+    <genre>Computer</genre>
+    <price>626.4300000000001</price>
+    <publish_date>2024-01-28</publish_date>
+    <description>Description for book 57.</description>
+  </book>
+  <book id="58">
+    <author>Author 58</author>
+    <title>Title 58</title>
+    <genre>Computer</genre>
+    <price>637.42</price>
+    <publish_date>2024-01-29</publish_date>
+    <description>Description for book 58.</description>
+  </book>
+  <book id="59">
+    <author>Author 59</author>
+    <title>Title 59</title>
+    <genre>Computer</genre>
+    <price>648.41</price>
+    <publish_date>2024-01-30</publish_date>
+    <description>Description for book 59.</description>
+  </book>
+  <book id="60">
+    <author>Author 60</author>
+    <title>Title 60</title>
+    <genre>Computer</genre>
+    <price>659.4</price>
+    <publish_date>2024-01-01</publish_date>
+    <description>Description for book 60.</description>
+  </book>
+  <book id="61">
+    <author>Author 61</author>
+    <title>Title 61</title>
+    <genre>Computer</genre>
+    <price>670.39</price>
+    <publish_date>2024-01-02</publish_date>
+    <description>Description for book 61.</description>
+  </book>
+  <book id="62">
+    <author>Author 62</author>
+    <title>Title 62</title>
+    <genre>Computer</genre>
+    <price>681.38</price>
+    <publish_date>2024-01-03</publish_date>
+    <description>Description for book 62.</description>
+  </book>
+  <book id="63">
+    <author>Author 63</author>
+    <title>Title 63</title>
+    <genre>Computer</genre>
+    <price>692.37</price>
+    <publish_date>2024-01-04</publish_date>
+    <description>Description for book 63.</description>
+  </book>
+  <book id="64">
+    <author>Author 64</author>
+    <title>Title 64</title>
+    <genre>Computer</genre>
+    <price>703.36</price>
+    <publish_date>2024-01-05</publish_date>
+    <description>Description for book 64.</description>
+  </book>
+  <book id="65">
+    <author>Author 65</author>
+    <title>Title 65</title>
+    <genre>Computer</genre>
+    <price>714.35</price>
+    <publish_date>2024-01-06</publish_date>
+    <description>Description for book 65.</description>
+  </book>
+  <book id="66">
+    <author>Author 66</author>
+    <title>Title 66</title>
+    <genre>Computer</genre>
+    <price>725.34</price>
+    <publish_date>2024-01-07</publish_date>
+    <description>Description for book 66.</description>
+  </book>
+  <book id="67">
+    <author>Author 67</author>
+    <title>Title 67</title>
+    <genre>Computer</genre>
+    <price>736.33</price>
+    <publish_date>2024-01-08</publish_date>
+    <description>Description for book 67.</description>
+  </book>
+  <book id="68">
+    <author>Author 68</author>
+    <title>Title 68</title>
+    <genre>Computer</genre>
+    <price>747.32</price>
+    <publish_date>2024-01-09</publish_date>
+    <description>Description for book 68.</description>
+  </book>
+  <book id="69">
+    <author>Author 69</author>
+    <title>Title 69</title>
+    <genre>Computer</genre>
+    <price>758.3100000000001</price>
+    <publish_date>2024-01-10</publish_date>
+    <description>Description for book 69.</description>
+  </book>
+  <book id="70">
+    <author>Author 70</author>
+    <title>Title 70</title>
+    <genre>Computer</genre>
+    <price>769.3000000000001</price>
+    <publish_date>2024-01-11</publish_date>
+    <description>Description for book 70.</description>
+  </book>
+  <book id="71">
+    <author>Author 71</author>
+    <title>Title 71</title>
+    <genre>Computer</genre>
+    <price>780.29</price>
+    <publish_date>2024-01-12</publish_date>
+    <description>Description for book 71.</description>
+  </book>
+  <book id="72">
+    <author>Author 72</author>
+    <title>Title 72</title>
+    <genre>Computer</genre>
+    <price>791.28</price>
+    <publish_date>2024-01-13</publish_date>
+    <description>Description for book 72.</description>
+  </book>
+  <book id="73">
+    <author>Author 73</author>
+    <title>Title 73</title>
+    <genre>Computer</genre>
+    <price>802.27</price>
+    <publish_date>2024-01-14</publish_date>
+    <description>Description for book 73.</description>
+  </book>
+  <book id="74">
+    <author>Author 74</author>
+    <title>Title 74</title>
+    <genre>Computer</genre>
+    <price>813.26</price>
+    <publish_date>2024-01-15</publish_date>
+    <description>Description for book 74.</description>
+  </book>
+  <book id="75">
+    <author>Author 75</author>
+    <title>Title 75</title>
+    <genre>Computer</genre>
+    <price>824.25</price>
+    <publish_date>2024-01-16</publish_date>
+    <description>Description for book 75.</description>
+  </book>
+  <book id="76">
+    <author>Author 76</author>
+    <title>Title 76</title>
+    <genre>Computer</genre>
+    <price>835.24</price>
+    <publish_date>2024-01-17</publish_date>
+    <description>Description for book 76.</description>
+  </book>
+  <book id="77">
+    <author>Author 77</author>
+    <title>Title 77</title>
+    <genre>Computer</genre>
+    <price>846.23</price>
+    <publish_date>2024-01-18</publish_date>
+    <description>Description for book 77.</description>
+  </book>
+  <book id="78">
+    <author>Author 78</author>
+    <title>Title 78</title>
+    <genre>Computer</genre>
+    <price>857.22</price>
+    <publish_date>2024-01-19</publish_date>
+    <description>Description for book 78.</description>
+  </book>
+  <book id="79">
+    <author>Author 79</author>
+    <title>Title 79</title>
+    <genre>Computer</genre>
+    <price>868.21</price>
+    <publish_date>2024-01-20</publish_date>
+    <description>Description for book 79.</description>
+  </book>
+  <book id="80">
+    <author>Author 80</author>
+    <title>Title 80</title>
+    <genre>Computer</genre>
+    <price>879.2</price>
+    <publish_date>2024-01-21</publish_date>
+    <description>Description for book 80.</description>
+  </book>
+  <book id="81">
+    <author>Author 81</author>
+    <title>Title 81</title>
+    <genre>Computer</genre>
+    <price>890.19</price>
+    <publish_date>2024-01-22</publish_date>
+    <description>Description for book 81.</description>
+  </book>
+  <book id="82">
+    <author>Author 82</author>
+    <title>Title 82</title>
+    <genre>Computer</genre>
+    <price>901.1800000000001</price>
+    <publish_date>2024-01-23</publish_date>
+    <description>Description for book 82.</description>
+  </book>
+  <book id="83">
+    <author>Author 83</author>
+    <title>Title 83</title>
+    <genre>Computer</genre>
+    <price>912.1700000000001</price>
+    <publish_date>2024-01-24</publish_date>
+    <description>Description for book 83.</description>
+  </book>
+  <book id="84">
+    <author>Author 84</author>
+    <title>Title 84</title>
+    <genre>Computer</genre>
+    <price>923.16</price>
+    <publish_date>2024-01-25</publish_date>
+    <description>Description for book 84.</description>
+  </book>
+  <book id="85">
+    <author>Author 85</author>
+    <title>Title 85</title>
+    <genre>Computer</genre>
+    <price>934.15</price>
+    <publish_date>2024-01-26</publish_date>
+    <description>Description for book 85.</description>
+  </book>
+  <book id="86">
+    <author>Author 86</author>
+    <title>Title 86</title>
+    <genre>Computer</genre>
+    <price>945.14</price>
+    <publish_date>2024-01-27</publish_date>
+    <description>Description for book 86.</description>
+  </book>
+  <book id="87">
+    <author>Author 87</author>
+    <title>Title 87</title>
+    <genre>Computer</genre>
+    <price>956.13</price>
+    <publish_date>2024-01-28</publish_date>
+    <description>Description for book 87.</description>
+  </book>
+  <book id="88">
+    <author>Author 88</author>
+    <title>Title 88</title>
+    <genre>Computer</genre>
+    <price>967.12</price>
+    <publish_date>2024-01-29</publish_date>
+    <description>Description for book 88.</description>
+  </book>
+  <book id="89">
+    <author>Author 89</author>
+    <title>Title 89</title>
+    <genre>Computer</genre>
+    <price>978.11</price>
+    <publish_date>2024-01-30</publish_date>
+    <description>Description for book 89.</description>
+  </book>
+  <book id="90">
+    <author>Author 90</author>
+    <title>Title 90</title>
+    <genre>Computer</genre>
+    <price>989.1</price>
+    <publish_date>2024-01-01</publish_date>
+    <description>Description for book 90.</description>
+  </book>
+  <book id="91">
+    <author>Author 91</author>
+    <title>Title 91</title>
+    <genre>Computer</genre>
+    <price>1000.09</price>
+    <publish_date>2024-01-02</publish_date>
+    <description>Description for book 91.</description>
+  </book>
+  <book id="92">
+    <author>Author 92</author>
+    <title>Title 92</title>
+    <genre>Computer</genre>
+    <price>1011.08</price>
+    <publish_date>2024-01-03</publish_date>
+    <description>Description for book 92.</description>
+  </book>
+  <book id="93">
+    <author>Author 93</author>
+    <title>Title 93</title>
+    <genre>Computer</genre>
+    <price>1022.07</price>
+    <publish_date>2024-01-04</publish_date>
+    <description>Description for book 93.</description>
+  </book>
+  <book id="94">
+    <author>Author 94</author>
+    <title>Title 94</title>
+    <genre>Computer</genre>
+    <price>1033.06</price>
+    <publish_date>2024-01-05</publish_date>
+    <description>Description for book 94.</description>
+  </book>
+  <book id="95">
+    <author>Author 95</author>
+    <title>Title 95</title>
+    <genre>Computer</genre>
+    <price>1044.05</price>
+    <publish_date>2024-01-06</publish_date>
+    <description>Description for book 95.</description>
+  </book>
+  <book id="96">
+    <author>Author 96</author>
+    <title>Title 96</title>
+    <genre>Computer</genre>
+    <price>1055.04</price>
+    <publish_date>2024-01-07</publish_date>
+    <description>Description for book 96.</description>
+  </book>
+  <book id="97">
+    <author>Author 97</author>
+    <title>Title 97</title>
+    <genre>Computer</genre>
+    <price>1066.03</price>
+    <publish_date>2024-01-08</publish_date>
+    <description>Description for book 97.</description>
+  </book>
+  <book id="98">
+    <author>Author 98</author>
+    <title>Title 98</title>
+    <genre>Computer</genre>
+    <price>1077.02</price>
+    <publish_date>2024-01-09</publish_date>
+    <description>Description for book 98.</description>
+  </book>
+  <book id="99">
+    <author>Author 99</author>
+    <title>Title 99</title>
+    <genre>Computer</genre>
+    <price>1088.01</price>
+    <publish_date>2024-01-10</publish_date>
+    <description>Description for book 99.</description>
+  </book>
+</catalog>

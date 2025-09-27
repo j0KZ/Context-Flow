@@ -1,0 +1,451 @@
+# ContextFlow .gitignore
+# Comprehensive ignore file for production GitHub repository
+
+# ============================================================================
+# Python
+# ============================================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.manifest
+*.spec
+pip-log.txt
+pip-delete-this-directory.txt
+.Python
+develop-eggs/
+.installed.cfg
+*.egg-info/
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.hypothesis/
+*.cover
+.cache
+nosetests.xml
+coverage.xml
+*.log
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+.ruff_cache/
+
+# ============================================================================
+# C/C++
+# ============================================================================
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.i
+*.ii
+*.gpu
+*.ptx
+*.cubin
+*.fatbin
+*.a
+*.la
+*.lo
+*.dll
+*.so
+*.dylib
+*.lib
+*.pdb
+*.idb
+*.pch
+*.gch
+*.ipch
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+build/
+out/
+
+# ============================================================================
+# Rust
+# ============================================================================
+target/
+Cargo.lock
+**/*.rs.bk
+*.pdb
+
+# ============================================================================
+# Go
+# ============================================================================
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.sum
+vendor/
+
+# ============================================================================
+# Node.js / JavaScript
+# ============================================================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.npm
+.eslintcache
+.node_repl_history
+*.tgz
+.yarn-integrity
+.env
+.env.test
+.env.local
+.env.*.local
+.cache
+.parcel-cache
+.next
+.nuxt
+dist
+.vuepress/dist
+.serverless/
+.fusebox/
+.dynamodb/
+.tern-port
+.vscode-test
+*.pid
+*.seed
+*.pid.lock
+pids
+logs
+*.log
+
+# ============================================================================
+# Docker
+# ============================================================================
+.dockerignore
+
+# ============================================================================
+# Kubernetes
+# ============================================================================
+*.kubeconfig
+kubeconfig
+*.tfstate
+*.tfstate.*
+.terraform/
+terraform.tfvars
+
+# ============================================================================
+# IDE and Editors
+# ============================================================================
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+.history/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+.idea_modules/
+
+# Eclipse
+.metadata/
+.project
+.classpath
+.settings/
+.loadpath
+.recommenders/
+*.launch
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# Vim
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+Session.vim
+Sessionx.vim
+.netrwhist
+*~
+tags
+[._]*.un~
+
+# Emacs
+*~
+\#*\#
+.\#*
+.emacs.desktop
+.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+
+# ============================================================================
+# Operating System
+# ============================================================================
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msm
+*.msp
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Linux
+.directory
+.Trash-*
+.nfs*
+
+# ============================================================================
+# Project Specific
+# ============================================================================
+
+# CloudFlow/Claude Flow related (not part of ContextFlow)
+cloud/
+cloudflow/
+.claude/
+.claude-flow/
+.hive-mind/
+.swarm/
+coordination/
+memory/
+CLAUDE.md
+claude-flow.cmd
+claude-flow
+*.cmb
+cloudflow.cmb
+
+# Test output and results (but keep test source files)
+test_output/
+test_results/
+benchmark_results/
+*.test.js
+*.spec.ts
+*.spec.js
+
+# Documentation (keep only essential)
+docs/internal/
+docs/reports/
+docs/development/
+docs/drafts/
+*.todo
+TODO.md
+NOTES.md
+
+# Internal documentation and audit files (not for GitHub)
+PORTFOLIO.md
+Q2_2024_PERFORMANCE_REPORT.md
+SECURITY.md
+RELEASE.md
+CODE_OF_CONDUCT.md
+
+# Audit and fix documentation (development only)
+*AUDIT*.md
+*_AUDIT_*.md
+AUDIT_*.md
+*FIX*.md
+FIX_*.md
+*_FIX_*.md
+FIXES_*.md
+TEST_RESULTS.md
+TEST_*.md
+DEPLOYMENT_*.md
+PRODUCTION_*.md
+POST_*.md
+PRE_*.md
+FINAL_*.md
+IMPLEMENTATION_*.md
+*_REPORT.md
+*_ANALYSIS.md
+*_CHECKLIST.md
+DEBUG_*.md
+WORKAROUND*.md
+TODO_*.md
+PLAN_*.md
+*_PLAN.md
+
+# Debug and test files
+test_*.py
+*_test.py
+*_debug.py
+debug_*.py
+test_lz77_debug.py
+
+# Data and temporary files
+*.tmp
+*.temp
+*.bak
+*.backup
+*.old
+*.orig
+*.rej
+tmp/
+temp/
+cache/
+data/
+*.db
+*.sqlite
+*.sqlite3
+
+# Compression test files
+*.ctx
+*.ctxarc
+test_input.*
+test_output.*
+compressed.*
+decompressed.*
+
+# Logs and metrics
+logs/
+*.log
+*.out
+metrics/
+monitoring/prometheus/data/
+monitoring/grafana/data/
+
+# Security and credentials
+*.key
+*.pem
+*.cert
+*.crt
+*.p12
+*.pfx
+secrets/
+credentials/
+.env*
+!.env.example
+config/local.yml
+config/production.yml
+
+# Build artifacts not needed for source
+bin/
+obj/
+Release/
+Debug/
+x64/
+x86/
+*.vsix
+
+# Package files
+*.tar.gz
+*.zip
+*.rar
+*.7z
+*.jar
+*.war
+*.ear
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.virtualenv/
+virtualenv/
+pipenv/
+.conda/
+conda-env/
+
+# Cache directories
+.sass-cache/
+.gradle/
+.m2/
+__pycache__/
+
+# Generated files
+*.generated.*
+*_gen.go
+*_pb.go
+*.pb.go
+
+# Benchmark and profiling
+*.prof
+*.pprof
+benchmarks/results/
+perf/
+
+# CI/CD
+.github/workflows/local/
+.gitlab-ci-local/
+.circleci/local/
+.travis/local/
+
+# Keep these essential files
+!README.md
+!LICENSE
+!CONTRIBUTING.md
+!CHANGELOG.md
+!ROADMAP.md
+!.gitignore
+!.github/workflows/*.yml
+!requirements.txt
+!package.json
+!pyproject.toml
+!setup.py
+!setup.cfg
+!Dockerfile
+!docker-compose.yml
+!contextflow/
+!contextflow/**/*.py
+!contextflow/tests/test_compression.py
+!contextflow/tests/test_comprehensive.py
+!contextflow/tests/test_advanced.py

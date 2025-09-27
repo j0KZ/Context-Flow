@@ -1,0 +1,385 @@
+# ContextFlow Helm Chart Values
+# Default values for contextflow deployment
+
+## Global Configuration
+global:
+  imageRegistry: ""
+  imagePullSecrets: []
+  storageClass: ""
+
+## Image Configuration
+image:
+  repository: contextflow/api
+  tag: "4.0.0"
+  pullPolicy: IfNotPresent
+
+## Deployment Configuration
+replicaCount: 3
+
+## Update Strategy
+updateStrategy:
+  type: RollingUpdate
+  rollingUpdate:
+    maxSurge: 1
+    maxUnavailable: 0
+
+## Pod Configuration
+podAnnotations: {}
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 65532
+  fsGroup: 65532
+
+securityContext:
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: true
+  allowPrivilegeEscalation: false
+
+## Service Configuration
+service:
+  type: ClusterIP
+  port: 8000
+  targetPort: 8000
+  annotations: {}
+
+## Ingress Configuration
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/proxy-body-size: "100m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "300"
+  hosts:
+    - host: contextflow.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - secretName: contextflow-tls
+      hosts:
+        - contextflow.example.com
+
+## Resources
+resources:
+  limits:
+    cpu: 1000m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+## Autoscaling
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 70
+  targetMemoryUtilizationPercentage: 80
+
+## Node Selection
+nodeSelector: {}
+tolerations: []
+affinity:
+  podAntiAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+    - weight: 100
+      podAffinityTerm:
+        labelSelector:
+          matchExpressions:
+          - key: app.kubernetes.io/name
+            operator: In
+            values:
+            - contextflow
+        topologyKey: kubernetes.io/hostname
+
+## Persistence
+persistence:
+  enabled: true
+  storageClass: ""
+  accessMode: ReadWriteOnce
+  size: 10Gi
+  mountPath: /data
+
+## Configuration
+config:
+  # Compression settings
+  compression:
+    defaultMode: standard
+    defaultLevel: 6
+    maxFileSize: "1Gi"
+    chunkSize: "64Mi"
+
+  # API settings
+  api:
+    workers: 4
+    timeout: 300
+    maxRequestSize: "100Mi"
+    rateLimit:
+      enabled: true
+      requests: 100
+      period: minute
+
+  # Cache settings
+  cache:
+    enabled: true
+    type: redis  # redis or memory
+    ttl: 3600
+    maxSize: "1Gi"
+
+  # Storage backends
+  storage:
+    s3:
+      enabled: false
+      bucket: ""
+      region: us-east-1
+      endpoint: ""
+      accessKey: ""
+      secretKey: ""
+
+    azure:
+      enabled: false
+      accountName: ""
+      accountKey: ""
+      container: ""
+
+    gcs:
+      enabled: false
+      bucket: ""
+      projectId: ""
+      credentialsJson: ""
+
+## Monitoring
+monitoring:
+  enabled: true
+
+  serviceMonitor:
+    enabled: true
+    interval: 30s
+    scrapeTimeout: 10s
+
+  prometheusRule:
+    enabled: true
+    rules:
+      - alert: HighCompressionLatency
+        expr: contextflow_compression_duration_seconds{quantile="0.99"} > 5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: High compression latency detected
+
+      - alert: LowCompressionRatio
+        expr: contextflow_compression_ratio < 1.5
+        for: 10m
+        labels:
+          severity: info
+        annotations:
+          summary: Low compression ratio detected
+
+  grafana:
+    enabled: true
+    dashboards:
+      enabled: true
+
+## Health Checks
+livenessProbe:
+  httpGet:
+    path: /health
+    port: http
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
+    path: /health
+    port: http
+  initialDelaySeconds: 5
+  periodSeconds: 5
+  timeoutSeconds: 3
+  failureThreshold: 3
+
+## Service Mesh Integration
+serviceMesh:
+  enabled: false
+
+  istio:
+    enabled: false
+    virtualService:
+      enabled: true
+      gateways:
+        - istio-system/main-gateway
+      timeout: 300s
+      retries:
+        attempts: 3
+        perTryTimeout: 100s
+
+    destinationRule:
+      enabled: true
+      trafficPolicy:
+        connectionPool:
+          tcp:
+            maxConnections: 100
+          http:
+            http1MaxPendingRequests: 100
+            h2UpgradePolicy: UPGRADE
+
+    peerAuthentication:
+      enabled: true
+      mtls:
+        mode: STRICT
+
+  linkerd:
+    enabled: false
+    serviceProfile:
+      enabled: true
+
+## Operator Configuration
+operator:
+  enabled: true
+  image:
+    repository: contextflow/operator
+    tag: "4.0.0"
+
+  resources:
+    limits:
+      cpu: 500m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 64Mi
+
+  webhooks:
+    enabled: true
+    failurePolicy: Fail
+
+  metrics:
+    enabled: true
+    port: 8080
+
+## Database Configuration (for metadata)
+postgresql:
+  enabled: false
+  auth:
+    database: contextflow
+    username: contextflow
+    password: changeme
+
+  primary:
+    persistence:
+      enabled: true
+      size: 8Gi
+
+## Redis Configuration (for caching)
+redis:
+  enabled: true
+  auth:
+    enabled: true
+    password: changeme
+
+  master:
+    persistence:
+      enabled: true
+      size: 8Gi
+
+  replica:
+    replicaCount: 2
+    persistence:
+      enabled: true
+      size: 8Gi
+
+## Backup Configuration
+backup:
+  enabled: false
+  schedule: "0 2 * * *"  # Daily at 2 AM
+
+  s3:
+    enabled: false
+    bucket: ""
+    region: us-east-1
+    accessKey: ""
+    secretKey: ""
+
+  retention:
+    days: 30
+    weeks: 12
+    months: 6
+
+## Network Policies
+networkPolicy:
+  enabled: true
+  policyTypes:
+    - Ingress
+    - Egress
+
+  ingress:
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            name: ingress-nginx
+      ports:
+      - protocol: TCP
+        port: 8000
+
+  egress:
+    - to:
+      - namespaceSelector: {}
+      ports:
+      - protocol: TCP
+        port: 443
+    - to:
+      - namespaceSelector:
+          matchLabels:
+            name: kube-system
+      ports:
+      - protocol: TCP
+        port: 53
+      - protocol: UDP
+        port: 53
+
+## Extra Environment Variables
+extraEnvVars: []
+#  - name: CUSTOM_VAR
+#    value: custom_value
+
+## Extra Volumes
+extraVolumes: []
+#  - name: custom-volume
+#    configMap:
+#      name: custom-config
+
+## Extra Volume Mounts
+extraVolumeMounts: []
+#  - name: custom-volume
+#    mountPath: /custom
+
+## Pod Disruption Budget
+podDisruptionBudget:
+  enabled: true
+  minAvailable: 1
+  # maxUnavailable: 1
+
+## Priority Class
+priorityClassName: ""
+
+## Service Account
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+## RBAC Configuration
+rbac:
+  create: true
+  rules:
+    - apiGroups: [""]
+      resources: ["configmaps", "secrets"]
+      verbs: ["get", "list", "watch"]
+    - apiGroups: [""]
+      resources: ["persistentvolumeclaims"]
+      verbs: ["get", "list", "watch", "create", "update", "patch"]

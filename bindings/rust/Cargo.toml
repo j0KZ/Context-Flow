@@ -1,0 +1,45 @@
+[package]
+name = "contextflow"
+version = "4.0.0"
+edition = "2021"
+authors = ["ContextFlow Team"]
+description = "High-performance compression library with KB-scale memory footprint"
+repository = "https://github.com/yourusername/contextflow"
+license = "MIT"
+keywords = ["compression", "lz77", "streaming", "delta", "dictionary"]
+categories = ["compression", "algorithms", "encoding"]
+
+[lib]
+name = "contextflow"
+crate-type = ["cdylib", "rlib", "staticlib"]
+
+[dependencies]
+libc = "0.2"
+thiserror = "1.0"
+anyhow = "1.0"
+
+[dev-dependencies]
+criterion = "0.5"
+tempfile = "3.8"
+rand = "0.8"
+proptest = "1.0"
+
+[build-dependencies]
+cc = "1.0"
+bindgen = "0.69"
+
+[[bench]]
+name = "compression"
+harness = false
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = 3
+
+[features]
+default = ["std"]
+std = []
+no_std = []
+simd = []
+gpu = []

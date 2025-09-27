@@ -1,0 +1,48 @@
+apiVersion: v2
+name: contextflow
+description: High-performance compression service with KB-scale memory footprint
+type: application
+version: 4.0.0
+appVersion: "4.0.0"
+
+keywords:
+  - compression
+  - lz77
+  - streaming
+  - delta
+  - dictionary
+  - contextflow
+
+home: https://github.com/yourusername/contextflow
+sources:
+  - https://github.com/yourusername/contextflow
+
+maintainers:
+  - name: ContextFlow Team
+    email: support@contextflow.io
+    url: https://contextflow.io
+
+icon: https://contextflow.io/logo.png
+
+annotations:
+  "artifacthub.io/category": storage
+  "artifacthub.io/license": MIT
+  "artifacthub.io/signKey": |
+    fingerprint: ABCD1234
+    url: https://contextflow.io/pgp-key.asc
+
+dependencies:
+  - name: postgresql
+    version: "12.x.x"
+    repository: https://charts.bitnami.com/bitnami
+    condition: postgresql.enabled
+
+  - name: redis
+    version: "17.x.x"
+    repository: https://charts.bitnami.com/bitnami
+    condition: redis.enabled
+
+  - name: prometheus
+    version: "19.x.x"
+    repository: https://prometheus-community.github.io/helm-charts
+    condition: monitoring.prometheus.enabled

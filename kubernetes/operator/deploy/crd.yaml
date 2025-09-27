@@ -1,0 +1,265 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: compressionjobs.contextflow.io
+spec:
+  group: contextflow.io
+  versions:
+  - name: v1
+    served: true
+    storage: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              source:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    enum: ["s3", "pvc", "configmap", "url"]
+                  path:
+                    type: string
+                  bucket:
+                    type: string
+                  key:
+                    type: string
+                  secretRef:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+              destination:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    enum: ["s3", "pvc", "configmap"]
+                  path:
+                    type: string
+                  bucket:
+                    type: string
+                  key:
+                    type: string
+                  secretRef:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+              compressionConfig:
+                type: object
+                properties:
+                  mode:
+                    type: string
+                    enum: ["standard", "turbo", "quantum", "streaming", "delta", "dictionary"]
+                    default: "standard"
+                  level:
+                    type: integer
+                    minimum: 1
+                    maximum: 9
+                    default: 6
+                  chunkSize:
+                    type: string
+                    default: "64Mi"
+                  dictionary:
+                    type: object
+                    properties:
+                      configMapRef:
+                        type: string
+                      build:
+                        type: boolean
+                        default: false
+              resources:
+                type: object
+                properties:
+                  requests:
+                    type: object
+                    properties:
+                      cpu:
+                        type: string
+                      memory:
+                        type: string
+                  limits:
+                    type: object
+                    properties:
+                      cpu:
+                        type: string
+                      memory:
+                        type: string
+              parallelism:
+                type: integer
+                minimum: 1
+                maximum: 32
+                default: 1
+              retries:
+                type: integer
+                minimum: 0
+                maximum: 10
+                default: 3
+          status:
+            type: object
+            properties:
+              phase:
+                type: string
+                enum: ["Pending", "Running", "Completed", "Failed"]
+              message:
+                type: string
+              startTime:
+                type: string
+              completionTime:
+                type: string
+              originalSize:
+                type: string
+              compressedSize:
+                type: string
+              compressionRatio:
+                type: string
+              throughput:
+                type: string
+  scope: Namespaced
+  names:
+    plural: compressionjobs
+    singular: compressionjob
+    kind: CompressionJob
+    shortNames:
+    - cj
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: compressionservices.contextflow.io
+spec:
+  group: contextflow.io
+  versions:
+  - name: v1
+    served: true
+    storage: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              replicas:
+                type: integer
+                minimum: 1
+                maximum: 100
+                default: 3
+              image:
+                type: string
+                default: "contextflow/api:4.0.0"
+              service:
+                type: object
+                properties:
+                  type:
+                    type: string
+                    enum: ["ClusterIP", "NodePort", "LoadBalancer"]
+                    default: "ClusterIP"
+                  port:
+                    type: integer
+                    default: 8000
+                  annotations:
+                    type: object
+                    additionalProperties:
+                      type: string
+              ingress:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                    default: false
+                  hostname:
+                    type: string
+                  tls:
+                    type: boolean
+                    default: true
+                  className:
+                    type: string
+                    default: "nginx"
+              autoscaling:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                    default: true
+                  minReplicas:
+                    type: integer
+                    default: 2
+                  maxReplicas:
+                    type: integer
+                    default: 10
+                  targetCPU:
+                    type: integer
+                    default: 70
+                  targetMemory:
+                    type: integer
+                    default: 80
+              resources:
+                type: object
+                properties:
+                  requests:
+                    type: object
+                    properties:
+                      cpu:
+                        type: string
+                        default: "100m"
+                      memory:
+                        type: string
+                        default: "128Mi"
+                  limits:
+                    type: object
+                    properties:
+                      cpu:
+                        type: string
+                        default: "1000m"
+                      memory:
+                        type: string
+                        default: "512Mi"
+              monitoring:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                    default: true
+                  serviceMonitor:
+                    type: boolean
+                    default: true
+                  grafanaDashboard:
+                    type: boolean
+                    default: true
+          status:
+            type: object
+            properties:
+              phase:
+                type: string
+              replicas:
+                type: integer
+              readyReplicas:
+                type: integer
+              endpoint:
+                type: string
+              conditions:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    type:
+                      type: string
+                    status:
+                      type: string
+                    message:
+                      type: string
+                    lastTransitionTime:
+                      type: string
+  scope: Namespaced
+  names:
+    plural: compressionservices
+    singular: compressionservice
+    kind: CompressionService
+    shortNames:
+    - cs

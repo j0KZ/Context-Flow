@@ -1,0 +1,22 @@
+# Core dependencies
+numpy>=1.19.0,<2.0.0
+numba>=0.54.0
+xxhash>=3.0.0
+
+# API and web
+fastapi>=0.68.0
+uvicorn[standard]>=0.15.0
+pydantic>=1.8.0
+python-multipart>=0.0.5
+websockets>=10.0
+
+# Cryptography (optional)
+cryptography>=3.4.0
+
+# Development tools (optional, install with pip install -e .[dev])
+# pytest>=6.0.0
+# pytest-cov>=2.0.0
+# black>=21.0.0
+# isort>=5.0.0
+# flake8>=3.9.0
+# mypy>=0.900
