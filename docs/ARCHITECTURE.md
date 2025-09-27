@@ -2,336 +2,247 @@
 
 ## Overview
 
-ContextFlow is designed as a modular, memory-efficient compression system that balances compression ratio with practical performance. The architecture prioritizes:
+ContextFlow is a modular compression system featuring three specialized compressors, each optimized for different use cases:
 
-- **Memory Efficiency**: KB-scale operation (not GB)
-- **Modularity**: Clear separation between stages
-- **Adaptability**: Dynamic adjustment based on data type
-- **Robustness**: Fallback mechanisms for edge cases
+- **TurboCompressor**: Fast parallel processing with 7-10x compression
+- **QuantumCompressor**: Neural-enhanced compression with 9-15x ratios
+- **AdvancedCompressor**: Smart algorithm selection and advanced features
 
 ## System Architecture
 
 ```
-┌────────────────────────────────────────────────────────┐
-│                    ContextFlow Core                    │
-├────────────────────────────────────────────────────────┤
-│                                                        │
-│  ┌──────────────┐  ┌──────────────┐  ┌─────────────┐ │
-│  │   Frontend   │  │   Pipeline   │  │   Backend   │ │
-│  │              │  │              │  │             │ │
-│  │ • CLI        │  │ • Detector   │  │ • tANS      │ │
-│  │ • Python API │  │ • LZ77       │  │ • Range     │ │
-│  │ • File I/O   │  │ • Context    │  │ • zlib      │ │
-│  └──────────────┘  │ • Neural     │  └─────────────┘ │
-│                    └──────────────┘                   │
-└────────────────────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────┐
+│                    ContextFlow System                       │
+├────────────────────────────────────────────────────────────┤
+│                                                             │
+│  ┌─────────────────────────────────────────────────────┐  │
+│  │              Three Core Compressors                  │  │
+│  ├─────────────────────────────────────────────────────┤  │
+│  │                                                      │  │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌───────────┐ │  │
+│  │  │    Turbo     │  │   Quantum    │  │ Advanced  │ │  │
+│  │  │              │  │              │  │           │ │  │
+│  │  │ • Parallel   │  │ • Neural     │  │ • Smart   │ │  │
+│  │  │ • Fast       │  │ • Range Code │  │ • Multi   │ │  │
+│  │  │ • Chunked    │  │ • xxHash64   │  │ • Stream  │ │  │
+│  │  └──────────────┘  └──────────────┘  └───────────┘ │  │
+│  └─────────────────────────────────────────────────────┘  │
+│                                                             │
+│  ┌─────────────────────────────────────────────────────┐  │
+│  │              Supporting Components                   │  │
+│  ├─────────────────────────────────────────────────────┤  │
+│  │                                                      │  │
+│  │  • ChunkedProcessor - Large file handling           │  │
+│  │  • FeatureFlags - Safe deployment control           │  │
+│  │  • DataDetector - Content type identification       │  │
+│  │  • ContextModel - Adaptive context modeling         │  │
+│  │  • Decompressor - Universal decompression           │  │
+│  └─────────────────────────────────────────────────────┘  │
+└────────────────────────────────────────────────────────────┘
 ```
 
 ## Component Details
 
-### 1. Data Detection Layer
+### 1. TurboCompressor
 
-**Purpose**: Identify data type for optimized compression strategy
-
-**Components**:
-- `DataDetector` class
-- Pattern recognition for text/code/JSON/XML/binary
-- Entropy analysis
-- Statistical profiling
-
-**Memory Usage**: <1KB
+**Purpose**: Fast compression with parallel processing
 
 **Key Features**:
-- O(1) detection with sampling
-- Language detection for code
-- Structure detection for JSON/XML
-- Binary entropy measurement
-
-### 2. Preprocessing Layer
-
-**Purpose**: Transform data for better compressibility
-
-**Components**:
-
-#### LZ77 Deduplication
-- **Window Size**: 32KB
-- **Min Match**: 4 bytes
-- **Max Match**: 258 bytes
-- **Hash Table**: O(1) lookups
-
-#### Burrows-Wheeler Transform (Optional)
-- **Block Size**: 10KB (reduced for speed)
-- **Memory**: O(n) for block
-- **Use Case**: Text data only
-
-**Memory Usage**: 32-64KB
-
-### 3. Context Modeling Layer
-
-**Purpose**: Build probability models for prediction
-
-**Components**:
-
-#### Multi-Order Contexts
-```python
-Order 0: P(byte)
-Order 1: P(byte | prev_1)
-Order 2: P(byte | prev_2)
-Order 3: P(byte | prev_3)
-Order 4: P(byte | prev_4)
-```
-
-#### Specialized Contexts
-- **Text**: Word-level contexts
-- **Code**: Keyword/identifier tracking
-- **JSON**: Key-value separation
-- **Binary**: Byte-pair frequencies
-
-**Memory Usage**: 256KB (64KB per order)
-
-**Hash Table Design**:
-```python
-class HashTable:
-    size = 1 << 20  # 1M entries
-    table = uint32[size, 2]  # symbol, count
-
-    def hash(context):
-        return fnv1a(context) & mask
-```
-
-### 4. Neural Mixing Layer
-
-**Purpose**: Combine context predictions optimally
+- Parallel block compression using ThreadPoolExecutor
+- Automatic chunking for files >64KB
+- Progress callbacks for large files
+- Fallback to zlib for reliability
 
 **Architecture**:
+```python
+TurboCompressor
+├── compress()
+│   ├── Check file size
+│   ├── If >64KB: Use ChunkedProcessor
+│   └── Else: Parallel block compression
+├── decompress()
+│   └── Delegate to ContextFlowDecompressor
+└── Internal
+    ├── adaptive_split() - Smart block splitting
+    ├── _compress_chunk() - Individual chunk compression
+    └── parallel_compress() - ThreadPool management
 ```
-Input (16) → Hidden (32) → Output (256)
+
+### 2. QuantumCompressor
+
+**Purpose**: Maximum compression ratio with neural enhancement
+
+**Key Features**:
+- xxHash64 for ultra-fast hashing (13.8 GB/s)
+- Neural context mixing for prediction
+- 64-bit range arithmetic coding
+- Memory pool allocation
+
+**Architecture**:
+```python
+QuantumCompressor
+├── compress()
+│   ├── Context modeling
+│   ├── Neural mixing
+│   └── Range encoding
+├── decompress()
+│   └── Reverse range decoding
+└── Components
+    ├── QuantumHash - Fast rolling hash
+    ├── QuantumMemoryPool - Pre-allocated buffers
+    ├── NeuralMixer - Pattern learning
+    └── RangeEncoder64 - Arithmetic coding
 ```
 
-**Components**:
-- **Weights**: ~10KB total
-- **Activation**: ReLU (fast)
-- **Output**: Softmax
-- **Learning**: Online SGD with momentum
+### 3. AdvancedCompressor
 
-**Training**:
-- **Learning Rate**: 0.01 (adaptive)
-- **Momentum**: 0.9
-- **Batch Size**: 1 (online)
+**Purpose**: Smart compression with multiple algorithms
 
-**Memory Usage**: <10KB
+**Key Features**:
+- Automatic algorithm selection
+- Streaming compression
+- Dictionary compression
+- Delta encoding
+- Encryption support
 
-### 5. Entropy Coding Layer
+**Architecture**:
+```python
+AdvancedCompressor
+├── compress()
+│   └── Smart algorithm selection
+├── decompress()
+│   └── Format detection and decompression
+├── Specialized Methods
+│   ├── compress_streaming() - Large file streaming
+│   ├── compress_with_dictionary() - Shared dictionaries
+│   ├── compress_delta() - Version control
+│   └── compress_and_encrypt() - Secure compression
+└── Q3 2024 Features
+    ├── StreamingCompressor
+    ├── DictionaryCompressor
+    ├── DeltaCompressor
+    └── SecureCompressor
+```
 
-**Purpose**: Convert predictions to compressed bits
+### 4. ChunkedProcessor
 
-**Components**:
+**Purpose**: Handle large files without memory/timeout issues
 
-#### tANS (Asymmetric Numeral Systems)
-- **Table Size**: 2^12 = 4KB
-- **State Bits**: 16
-- **Renormalization**: Streaming
+**Key Features**:
+- Automatic chunking for files >64KB
+- Parallel chunk processing
+- Progress reporting
+- Constant memory usage
 
-#### Range Coder (Backup)
-- **Precision**: 24 bits
-- **Renormalization**: 16 bits
+**Operation**:
+1. Check file size against threshold (64KB default)
+2. If large: Split into chunks
+3. Process chunks in parallel
+4. Aggregate results with metadata
+5. Return chunked format
 
-#### zlib (Fallback)
-- **Use Case**: Incompressible data
-- **Levels**: 1, 6, 9
+### 5. Configuration System
 
-**Memory Usage**: 4-8KB
+**FeatureFlags**: Control experimental features
+```python
+USE_CHUNKED_PROCESSING = True    # Large file support
+USE_PARALLEL_PROCESSING = True   # Multi-threading
+ENABLE_FALLBACKS = True          # zlib fallback
+USE_CUSTOM_LZ77 = False         # Experimental
+USE_GPU = False                 # GPU acceleration
+```
+
+**CompressionConfig**: Tunable parameters
+```python
+LARGE_FILE_THRESHOLD = 65536   # 64KB
+CHUNK_SIZE = 65536             # 64KB chunks
+MAX_THREADS = 8                # Parallel threads
+```
 
 ## Data Flow
 
 ### Compression Pipeline
 
 ```
-1. Input → Data Detection
-   ↓
-2. Type-specific preprocessing
-   ↓
-3. LZ77 deduplication
-   ↓
-4. Context modeling
-   ↓
-5. Neural prediction mixing
-   ↓
-6. Entropy coding
-   ↓
-7. Output with metadata
+Input Data
+    ↓
+[Size Check]
+    ├─> Small (<64KB)
+    │       ↓
+    │   [Direct Compression]
+    │       ↓
+    │   [Selected Algorithm]
+    │       ↓
+    │   Compressed Data
+    │
+    └─> Large (>64KB)
+            ↓
+        [ChunkedProcessor]
+            ↓
+        [Parallel Chunks]
+            ↓
+        [Aggregate]
+            ↓
+        Chunked Format
 ```
 
 ### Decompression Pipeline
 
 ```
-1. Parse header/metadata
-   ↓
-2. Entropy decoding
-   ↓
-3. Context reconstruction
-   ↓
-4. LZ77 restoration
-   ↓
-5. Inverse preprocessing
-   ↓
-6. Output verification
-```
-
-## Memory Layout
-
-### Total Memory Budget: <512KB
-
-```
-Context Models:     256KB (50%)
-LZ77 Window:        32KB  (6%)
-Hash Tables:        128KB (25%)
-Neural Network:     10KB  (2%)
-Entropy Tables:     8KB   (1.5%)
-Working Buffers:    64KB  (12.5%)
-Miscellaneous:      14KB  (3%)
-─────────────────────────────
-Total:              512KB
-```
-
-## Optimization Strategies
-
-### Speed Optimizations
-
-1. **Hash Function Selection**
-   - FNV-1a for speed
-   - xxHash for quality
-   - CityHash for distribution
-
-2. **Cache Optimization**
-   - Align hash tables to cache lines
-   - Prefetch next context
-   - Minimize pointer chasing
-
-3. **Vectorization**
-   - SIMD for probability updates
-   - AVX2 for neural forward pass
-   - SSE for entropy coding
-
-### Memory Optimizations
-
-1. **Compact Representations**
-   - 16-bit counts (with rescaling)
-   - 8-bit probabilities
-   - Packed structures
-
-2. **Sharing**
-   - Reuse buffers between stages
-   - Single allocation pool
-   - Memory-mapped files for large data
-
-3. **Streaming**
-   - Process in blocks
-   - Limited lookahead
-   - Incremental updates
-
-## Error Handling
-
-### Robustness Mechanisms
-
-1. **Fallback Chain**
-   ```
-   tANS → Range Coder → zlib → Store
-   ```
-
-2. **Validation**
-   - Header checksums
-   - Block CRCs
-   - Size limits
-
-3. **Recovery**
-   - Partial decompression
-   - Skip corrupted blocks
-   - Error reporting
-
-## File Format Specification
-
-### Header Structure
-
-```
-Offset  Size  Description
-0       4     Magic: 'CTXF'
-4       1     Version (1-255)
-5       1     Flags
-              Bit 0: Fast mode
-              Bit 1: Max compression
-              Bit 2: Neural enabled
-              Bits 3-7: Reserved
-6       2     Block size (KB)
-8       4     Original size
-12      4     Metadata size
-16      N     JSON metadata
-16+N    M     Compressed blocks
-16+N+M  4     SHA-256 checksum (truncated)
-```
-
-### Block Format
-
-```
-[1 byte]  Block type
-          0x00: Stored
-          0x01: LZ77
-          0x02: Context
-          0x03: Neural
-[4 bytes] Block size
-[N bytes] Block data
+Compressed Data
+    ↓
+[Format Detection]
+    ├─> Standard Format
+    │       ↓
+    │   [Algorithm Decompress]
+    │       ↓
+    │   Original Data
+    │
+    └─> Chunked Format
+            ↓
+        [Extract Chunks]
+            ↓
+        [Parallel Decompress]
+            ↓
+        [Reassemble]
+            ↓
+        Original Data
 ```
 
 ## Performance Characteristics
 
-### Time Complexity
+### TurboCompressor
+- **Speed**: Fast (parallel processing)
+- **Ratio**: 7-10x typical
+- **Memory**: Moderate (thread pools)
+- **Best for**: General purpose, speed priority
 
-| Operation | Complexity |
-|-----------|------------|
-| Detection | O(1) sampling |
-| LZ77 | O(n) with hash |
-| Context | O(1) per byte |
-| Neural | O(1) forward pass |
-| Entropy | O(n) streaming |
+### QuantumCompressor
+- **Speed**: Moderate (neural overhead)
+- **Ratio**: 9-15x typical
+- **Memory**: Low (memory pools)
+- **Best for**: Text, structured data
 
-### Space Complexity
+### AdvancedCompressor
+- **Speed**: Variable (algorithm dependent)
+- **Ratio**: 7-20x depending on method
+- **Memory**: Variable
+- **Best for**: Mixed content, special features
 
-| Component | Memory |
-|-----------|--------|
-| Detection | O(1) |
-| LZ77 | O(window) |
-| Context | O(contexts) |
-| Neural | O(params) |
-| Entropy | O(alphabet) |
+## Error Handling
 
-## Comparison with Other Systems
+All compressors implement robust error handling:
 
-### vs PAQ Family
-- **PAQ**: GB memory, days to compress
-- **ContextFlow**: KB memory, seconds to compress
+1. **Input Validation**: Check data integrity
+2. **Fallback Mechanisms**: Use zlib if primary fails
+3. **Progress Reporting**: Track large operations
+4. **Graceful Degradation**: Continue with reduced features
+5. **Clear Error Messages**: Actionable feedback
 
-### vs LLM-based
-- **LLM**: 100GB models, GPU required
-- **ContextFlow**: 10KB network, CPU only
+## Future Enhancements
 
-### vs Traditional
-- **gzip**: No adaptation, simple LZ77
-- **ContextFlow**: Adaptive, multi-stage
-
-## Future Architectural Improvements
-
-### Short Term
-1. Better hash functions
-2. SIMD vectorization
-3. Parallel blocks
-4. GPU offload
-
-### Long Term
-1. Learned indexes
-2. Neural architecture search
-3. Distributed compression
-4. Hardware acceleration
-
-## Conclusion
-
-ContextFlow's architecture achieves its design goals of lightweight memory usage, modular design, and practical performance. The KB-scale footprint makes it suitable for embedded systems while maintaining competitive compression ratios through intelligent adaptation and neural mixing.
+- GPU acceleration (experimental flag exists)
+- Custom LZ77 implementation (in progress)
+- Neural pattern database
+- Cloud compression service
+- Real-time streaming compression
